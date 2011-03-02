@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package>
+  <id>tweetnest</id>
+  <name>Tweet Nest</name>
+  <description>A browsable backup for your tweets</description>
+  <version>0.8.1-18</version>
+  <type>application</type>
+  <db>mysql</db>
+  <install>
+      <preference type="text" label="Twitter Username" name="twitter_screenname"/>
+  </install>
+  <configuration>
+      <preference type="text" label="Application Name" name="name"/>
+  </configuration>
+  <colors>
+      <scheme>bars</scheme>
+  </colors>
+  <link title="admin" rel="section" type="text/html" href="/maintenance/"/>
+</package>

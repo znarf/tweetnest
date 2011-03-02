@@ -16,11 +16,26 @@
 	<meta name="description" content="An archive of all tweets written by <?php echo s(rtrim($author['realname'], ".")); ?>." />
 	<meta name="author" content="<?php echo s($author['realname']); ?>" />
 	<link rel="stylesheet" href="<?php echo s($styleFile); ?>" type="text/css" />
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/<?php echo s($jQueryVersion); ?>/jquery.min.js"></script>
+	<script type="text/javascript" src="<?php echo Ld_Ui::getJsUrl('/jquery/jquery.js', 'js-jquery') ?>"></script>
 <?php if($config['anywhere_apikey']){ ?>	<script type="text/javascript" src="http://platform.twitter.com/anywhere.js?id=<?php echo s($config['anywhere_apikey']); ?>&amp;v=1"></script><?php echo "\n"; } ?>
 	<script type="text/javascript" src="<?php echo $path; ?>/tweets.js"></script>
+	<?php if (defined('LD_COMPRESS_CSS') && constant('LD_COMPRESS_CSS')) : ?>
+	  <link href="<?php echo Ld_Ui::getCssUrl('/h6e-minimal/h6e-minimal.compressed.css', 'h6e-minimal') ?>" rel="stylesheet" type="text/css"/>
+	  <link href="<?php echo Ld_Ui::getCssUrl('/ld-ui/ld-ui.compressed.css', 'ld-ui') ?>" rel="stylesheet" type="text/css"/>
+	<?php else : ?>
+	  <link href="<?php echo Ld_Ui::getCssUrl('/h6e-minimal/h6e-minimal.css', 'h6e-minimal') ?>" rel="stylesheet" type="text/css"/>
+	  <link href="<?php echo Ld_Ui::getCssUrl('/ld-ui/ld-ui.css', 'ld-ui') ?>" rel="stylesheet" type="text/css"/>
+	<?php endif ?>
+	<?php if (defined('LD_APPEARANCE') && constant('LD_APPEARANCE')) : ?>
+	  <link href="<?php echo Ld_Ui::getApplicationStyleUrl() ?>" rel="stylesheet" type="text/css"/>
+	<?php endif ?>
+	<style type="text/css">
+	body { padding-top:30px !important; }
+	ul.ld-nav { z-index:99; top:35px; }
+	</style>
 </head>
 <body>
+	<?php Ld_Ui::topBar() ?>
 	<div id="container">
 		<div id="top">
 			<div id="author">

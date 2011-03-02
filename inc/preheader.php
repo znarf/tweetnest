@@ -11,7 +11,9 @@
 	define("TWEET_NEST", "0.8.1"); // Version number
 	
 	require "config.php";
-	if(empty($config['twitter_screenname'])){ header("Location: ./setup.php"); exit; }
+
+	require_once dirname(__FILE__) . "/../dist/prepend.php";
+
 	date_default_timezone_set($config['timezone']);
 	define("DTP", $config['db']['table_prefix']);
 	
