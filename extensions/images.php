@@ -25,10 +25,10 @@
 						if($domain == "twitpic.com"){
 							$imgs[$link] = "http://twitpic.com/show/thumb/" . $imgid;
 						}
-						if($domain == "yfrog.com"){
+						if($domain == "yfrog.com" || $domain == "yfrog.us"){
 							$imgs[$link] = "http://yfrog.com/" . $imgid . ".th.jpg";
 						}
-						if($domain == "tweetphoto.com" || $domain == "pic.gd"){
+						if($domain == "tweetphoto.com" || $domain == "pic.gd" || $domain == "plixi.com"){
 							$imgs[$link] = "http://tweetphotoapi.com/api/TPAPI.svc/imagefromurl?size=thumbnail&url=" . $link;
 						}
 						if($domain == "twitgoo.com"){

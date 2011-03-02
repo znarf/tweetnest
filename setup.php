@@ -94,7 +94,7 @@
 	if($post){
 		$log[] = "Settings being submitted!";
 		$log[] = "PHP version: " . PHP_VERSION;
-		if(!empty($_POST['twitter_screenname']) && !empty($_POST['tz']) && !empty($_POST['path']) && !empty($_POST['db_hostname']) && !empty($_POST['db_username']) && !empty($_POST['db_password']) && !empty($_POST['db_database']) && !empty($_POST['db_table_prefix'])){ // Required fields
+		if(!empty($_POST['twitter_screenname']) && !empty($_POST['tz']) && !empty($_POST['path']) && !empty($_POST['db_hostname']) && !empty($_POST['db_username']) && !empty($_POST['db_database'])){ // Required fields
 			$log[] = "All required fields filled in.";
 			if(preg_match("/^[a-zA-Z0-9_]+$/", $_POST['twitter_screenname']) && strlen($_POST['twitter_screenname']) <= 15){
 				$log[] = "Valid Twitter screen name.";
@@ -106,7 +106,7 @@
 			} else {
 				$e[] = "Invalid time zone.";
 			}
-			if(preg_match("/^[a-zA-Z0-9_]+$/", $_POST['db_table_prefix'])){
+			if(empty($_POST['db_table_prefix']) || preg_match("/^[a-zA-Z0-9_]+$/", $_POST['db_table_prefix'])){
 				$log[] = "Valid table name prefix.";
 			} else {
 				$e[] = "Invalid table name prefix. You can only use letters, numbers and the _ character.";
@@ -609,7 +609,7 @@ INSTALL LOG: <?php var_dump($log); ?>
 			</div>
 			<div class="input lastinput">
 				<label for="db_table_prefix">Table name prefix</label>
-				<div class="field required"><input type="text" class="text" name="db_table_prefix" id="db_table_prefix" maxlength="10" value="<?php echo $_POST['db_table_prefix'] ? s($_POST['db_table_prefix']) : s("tn_"); ?>" /></div>
+				<div class="field required"><input type="text" class="text" name="db_table_prefix" id="db_table_prefix" maxlength="10" value="<?php echo !empty($_POST) ? s($_POST['db_table_prefix']) : s("tn_"); ?>" /></div>
 				<div class="what">The Tweet Archive set up page (that&#8217;s this one!) generates three different tables, and to prevent the names clashing with some already there, here you can type a character sequence prefixed to the name of both tables. Something like <strong>&#8220;ta_&#8221;</strong> or <strong>&#8220;tn_&#8221;</strong> is good.</div>
 			</div>
 			
